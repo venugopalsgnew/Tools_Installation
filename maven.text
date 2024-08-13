@@ -1,0 +1,44 @@
+# Download mvn binary and set the environmental variable
+
+cd /opt/
+
+# Go to maven download page and get the below URL
+
+wget https://dlcdn.apache.org/maven/maven-3/3.9.8/binaries/apache-maven-3.9.8-bin.tar.gz
+
+tar -xvzf apache-maven-3.9.6-bin.tar.gz
+
+mv apache-maven-3.9.6-bin.tar.gz maven
+
+
+# place the below entries into /etc/profile
+
+M2_HOME=/opt/maven
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$M2_HOME/bin
+export M2_HOME
+export PATH
+
+# ----------------------------------------------------
+# Note: After set the path and exported the environment variables on /etc/profile to reflect the changes over server you should run the
+
+# below cmd:
+
+#source /etc/environment
+
+# You can exit from the Current shell and Re-login
+
+root@ip-10-3-0-220:~# mvn -v
+
+Apache Maven 3.9.8 (36645f6c9b5079805ea5009217e36f2cffd34256)
+
+Maven home: /opt/maven
+
+Java version: 17.0.11, vendor: Ubuntu, runtime: /usr/lib/jvm/java-17-openjdk-amd64
+
+Default locale: en, platform encoding: UTF-8
+
+OS name: "linux", version: "6.8.0-1009-aws", arch: "amd64", family: "unix"
+
+root@ip-172-31-28-78:~# echo $M2_HOME
+
+/opt/maven
